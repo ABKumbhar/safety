@@ -15,6 +15,7 @@ class Qnai(models.Model):
             ('ma','maintenance'),]
 
     number = models.IntegerField(null=True)
+    urlref = models.URLField(null=True)
     question = models.TextField(blank=True,null=True)
     answer = models.TextField(blank=True,null=True)
     typeofop = models.CharField(max_length=2,null=True,choices=type,default='st')
@@ -37,6 +38,7 @@ class Qnae(models.Model):
             ('ma','maintenance'),]
 
     number = models.IntegerField(null=True)
+    urlref = models.URLField(null=True)
     question = models.TextField(blank=True,null=True)
     answer = models.TextField(blank=True,null=True)
     typeofop = models.CharField(max_length=2,null=True,choices=type,default='st')
