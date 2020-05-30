@@ -25,7 +25,7 @@ SECRET_KEY = 'tkf26t9(*1iqg6tkmdx9#o-*v4im3(bg0jj@t&hy!oig2&ya-p'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['abkumbhar.pythonanywhere.com']
 
 
 # Application definition
@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'rest_framework.authtoken',
+    'corsheaders',
     'rest_framework',
     'industry',
     'django.contrib.staticfiles',
