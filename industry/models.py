@@ -42,8 +42,8 @@ class Qnae(models.Model):
     question = models.TextField(blank=True,null=True)
     answer = models.TextField(blank=True,null=True)
     typeofop = models.CharField(max_length=2,null=True,choices=type,default='st')
+    
 
-    def __str__(self):
-        return self.question
+
 
 
