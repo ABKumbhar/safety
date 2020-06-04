@@ -32,6 +32,5 @@ class QnaeViewSet(viewsets.ModelViewSet):
 class ApiAllView(ListAPIView):
     queryset = Industry.objects.all()
     serializer_class = industryserializers
-    pagination_class = PageNumberPagination
     filter_backends = (SearchFilter,OrderingFilter,)
     search_fields = ('$name','$adinfo','$equipment__name','$equipment__adinfo',)
