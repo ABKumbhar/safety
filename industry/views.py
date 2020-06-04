@@ -5,7 +5,9 @@ from rest_framework.response import Response
 from .serializers import *
 from .models import *
 from rest_framework import viewsets
-
+from rest_framework.generics import ListAPIView
+from rest_framework.pagination import PageNumberPagination
+from rest_framework.filters import SearchFilter,OrderingFilter
 
 class IndustryViewSet(viewsets.ModelViewSet):
     queryset = Industry.objects.all()
@@ -25,3 +27,11 @@ class QnaiViewSet(viewsets.ModelViewSet):
 class QnaeViewSet(viewsets.ModelViewSet):
     queryset = Qnae.objects.all()
     serializer_class = qnaeserializers
+
+
+class ApiAllView(ListAPIView):
+    queryset = Industry.objects.all()
+    serializer_class = industryserializers
+    pagination_class = PageNumberPagination
+    filter_backends = (SearchFilter,OrderingFilter,)
+    search_fields = ('$name','$adinfo','$equipment__name','$equipment__adinfo',)

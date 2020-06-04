@@ -2,6 +2,7 @@ from django.contrib import admin
 from django.urls import path,include
 from . import views
 from rest_framework.routers import DefaultRouter
+from industry.views import ApiAllView
 
 router = DefaultRouter()
 
@@ -14,5 +15,6 @@ router.register(r'qnae',views.QnaeViewSet)
 
 urlpatterns = [
       path('', include(router.urls)),
+      path('list',ApiAllView.as_view(),name="list"),
 
 ]
