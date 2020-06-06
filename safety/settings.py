@@ -40,16 +40,18 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'rest_framework',
     'corsheaders',
-
+    'drf_multiple_model',
     'industry',
     'django.contrib.staticfiles',
 
 ]
-#Rest_framework
-# REST_FRAMEWORK = {
-#     'DEFAULT_PAGINATION_CLASS' : 'rest_framework.pagination.PageNumberPagination',
-#     'PAGE_SIZE' : "5",
-# }
+
+REST_FRAMEWORK = {
+    # 'DEFAULT_PAGINATION_CLASS' : 'rest_framework.pagination.PageNumberPagination',
+    # 'PAGE_SIZE' : "5",
+    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend'],
+
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
