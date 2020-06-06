@@ -33,7 +33,9 @@ class QnaeViewSet(viewsets.ModelViewSet):
     serializer_class = qnaeserializers
 
 
-class ApiAllView(ObjectMultipleModelAPIView):
+class ApiAllView(FlatMultipleModelAPIView):
+    add_model_type = True
+
     querylist = [{'queryset' : Industry.objects.all(),
     'serializer_class' :  industryserializers 
     },
@@ -43,6 +45,6 @@ class ApiAllView(ObjectMultipleModelAPIView):
     
     ]
 
-    filter_backends = (SearchFilter,OrderingFilter,)
+    filter_backends = (SearchFilter,)
     search_fields = ('$name',)
     #'$adinfo','$equipment__name','$equipment__adinfo',)
