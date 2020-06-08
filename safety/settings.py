@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'drf_multiple_model',
     'industry',
+    'main',
     'django.contrib.staticfiles',
 
 ]
