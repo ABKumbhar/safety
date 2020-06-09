@@ -27,12 +27,12 @@ ht_news = []
 ht_url = []
 
 for l in atag:
-
+    ht_url.append(l["href"])
     # try:
     #     Industry.objects.get(name=(l.text))
 
     # except:    
-    Industry.objects.create(name = (l.text),url='https://www.osha.gov'+(l["href"]))
+    #Industry.objects.create(name = (l.text),url='https://www.osha.gov'+(l["href"]))
 
 
 def index(req):
