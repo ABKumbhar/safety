@@ -3,17 +3,6 @@ import requests
 from bs4 import BeautifulSoup
 from industry.models import *
 # Create your views here.
-toi_r = requests.get("https://timesofindia.indiatimes.com/briefs")
-toi_soup = BeautifulSoup(toi_r.content, 'html5lib')
-
-toi_headings = toi_soup.find_all('h2')
-
-toi_headings = toi_headings[0:-13] # removing footers
-
-toi_news = []
-
-for th in toi_headings:
-    toi_news.append(th.text)
 
 
 
@@ -27,12 +16,26 @@ ht_news = []
 ht_url = []
 
 for l in atag:
+    ht_url.append(l["href"])
+    # try:
+    #     Industry.objects.get(name=(l.text))
+
+    # except:    
+    #Industry.objects.create(name = (l.text),url='https://www.osha.gov'+(l["href"]))
+
+ni_r = requests.get("https://www.cdc.gov/niosh/topics/industries.html")
+ni_soup = BeautifulSoup(ni_r.content, 'html5lib')
+ni_headings = ni_soup.find("ul",{"class":"block-list"})
+atagni = ni_headings.findAll("a")
+
+
+for l in atagni:
+    
     try:
         Industry.objects.get(name=(l.text))
 
-    except:    
-        Industry.objects.create(name = (l.text),url='https://www.osha.gov'+(l["href"]))
-
+    except:
+        Industry.objects.create(name = (l.text),url='https://www.cdc.gov'+(l["href"]))
 
 def index(req):
     return render(req, 'main/index.html', {'toi_news':toi_news, 'ht_news': ht_news})
