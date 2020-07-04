@@ -64,4 +64,3 @@ class ApiAllView(FlatMultipleModelAPIView):
 
     filter_backends = (SearchFilter,)
     search_fields = ('$name',)
-    #'$adinfo','$equipment__name','$equipment__adinfo',)

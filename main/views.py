@@ -37,6 +37,30 @@ from industry.models import *
 #     except:
 #         Industry.objects.create(name = (l.text),url='https://www.cdc.gov'+(l["href"]),adinfo="NIOSH")
 
+# industries = Industry.objects.all()
+# for i in industries:
+#     try:
+#         Qnai.objects.get(industry = i )
+    
+#     except:
+#         urls = i.url
+
+#         if i.adinfo == "OSHA":
+#             oqnai = requests.get(urls)
+#             oqnaisoup = BeautifulSoup(oqnai.content, 'html5lib')
+#             oqnaitext = oqnaisoup.findAll("td")
+#             count=1
+#             for answers in oqnaitext:
+#                 if len(answers.text) > 50:
+#                         Qnai.objects.create(industry = i,question="Most asked question",answer = answers.text,urlref = urls,number =count )
+#                         count = count+1
+
+
+
+
+
+
+
 def index(req):
     return render(req, 'main/index.html',) 
     #{'toi_news':toi_news, 'ht_news': ht_news})
