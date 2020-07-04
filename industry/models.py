@@ -2,10 +2,10 @@ from django.db import models
 
 # Create your models here.
 class Industry(models.Model):
-    name = models.CharField(max_length = 20)
+    name = models.CharField(max_length = 100)
     adinfo = models.TextField(blank=True,null=True)
     url = models.URLField(null=True)
-
+    trending = models.BooleanField(null=True, default=False)
     def __str__(self):
         return self.name
 
@@ -25,6 +25,7 @@ class Equipment(models.Model):
     name = models.CharField(max_length = 50, null=True)
     adinfo = models.TextField(blank=True,null=True)
     url = models.URLField(null=True)
+    trending = models.BooleanField(null=True, default=False)
 
     def __str__(self):
         return self.name
