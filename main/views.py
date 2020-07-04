@@ -17,11 +17,11 @@ ht_url = []
 
 for l in atag:
     ht_url.append(l["href"])
-    # try:
-    #     Industry.objects.get(name=(l.text))
+    try:
+        Industry.objects.get(name=(l.text))
 
-    # except:    
-    #Industry.objects.create(name = (l.text),url='https://www.osha.gov'+(l["href"]))
+    except:    
+        Industry.objects.create(name = (l.text),url='https://www.osha.gov'+(l["href"]),adinfo="OSHA")
 
 ni_r = requests.get("https://www.cdc.gov/niosh/topics/industries.html")
 ni_soup = BeautifulSoup(ni_r.content, 'html5lib')
@@ -35,7 +35,7 @@ for l in atagni:
         Industry.objects.get(name=(l.text))
 
     except:
-        Industry.objects.create(name = (l.text),url='https://www.cdc.gov'+(l["href"]))
+        Industry.objects.create(name = (l.text),url='https://www.cdc.gov'+(l["href"]),adinfo="NIOSH")
 
 def index(req):
     return render(req, 'main/index.html', {'toi_news':toi_news, 'ht_news': ht_news})
