@@ -10,6 +10,8 @@ from rest_framework.pagination import PageNumberPagination
 from rest_framework.filters import SearchFilter,OrderingFilter
 from drf_multiple_model.views import ObjectMultipleModelAPIView
 from drf_multiple_model.views import FlatMultipleModelAPIView
+from rest_framework.decorators import action
+from rest_framework.response import Response
 
 
 
@@ -17,11 +19,26 @@ class IndustryViewSet(viewsets.ModelViewSet):
     queryset = Industry.objects.all()
     serializer_class = industryserializers
 
+    @action(detail=False, methods=['GET'])
+    def trending(self, request):
+        query = Industry.objects.filter(trending= True)
+        serializer = industryserializers(query,many=True)
+        
+        return Response(serializer.data,status=200)
+  
+
 
 class EquipmentViewSet(viewsets.ModelViewSet):
     queryset = Equipment.objects.all()
     serializer_class = equipmentserializers
 
+    @action(detail=False, methods=['GET'])
+    def trending(self, request):
+        query = Equipment.objects.filter(trending= True)
+        serializer = equipmentserializers(query,many=True)
+        
+        return Response(serializer.data,status=200)
+  
 
 class QnaiViewSet(viewsets.ModelViewSet):
     queryset = Qnai.objects.all()
