@@ -24,7 +24,7 @@ class industryserializers(serializers.ModelSerializer):
     questioni = qnaiserializers(
     many=True, read_only=True
     )
-    equipment = equipmentserializers(many=True,read_only=True)   
+    equipment = equipmentserializers(many=True,read_only=True)
     class Meta:
         model = Industry
         fields = '__all__'

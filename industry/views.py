@@ -18,7 +18,7 @@ from rest_framework.response import Response
 class IndustryViewSet(viewsets.ModelViewSet):
     queryset = Industry.objects.all()
     serializer_class = industryserializers
-
+    lookup_field = 'slug'
     @action(detail=False, methods=['GET'])
     def trending(self, request):
         query = Industry.objects.filter(trending= True)
@@ -26,6 +26,13 @@ class IndustryViewSet(viewsets.ModelViewSet):
         
         return Response(serializer.data,status=200)
   
+
+    @action(detail=True, methods=['GET'])
+    def question(self, request, slug):
+        query = self.get_object()
+        questioni = Qnai.objects.filter(industry=query)
+        serializer = qnaiserializers(questioni,many=True)
+        return Response(serializer.data,status=200)
 
 
 class EquipmentViewSet(viewsets.ModelViewSet):
