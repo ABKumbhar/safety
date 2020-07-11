@@ -6,8 +6,14 @@ class Industry(models.Model):
     adinfo = models.TextField(blank=True,null=True)
     url = models.URLField(null=True)
     trending = models.BooleanField(null=True, default=False)
+    slug = models.SlugField(null=True,blank=True)
     def __str__(self):
         return self.name
+
+    def save(self, *args, **kwargs): # new
+        if not self.slug:
+            self.slug = slugify(self.name)
+        return super().save(*args, **kwargs)
 
 class Qnai(models.Model):
     industry = models.ForeignKey('Industry',related_name='questioni',on_delete=models.CASCADE)
@@ -26,6 +32,7 @@ class Equipment(models.Model):
     adinfo = models.TextField(blank=True,null=True)
     url = models.URLField(null=True)
     trending = models.BooleanField(null=True, default=False)
+    slug = models.SlugField(null=True,blank=True,default="")
 
     def __str__(self):
         return self.name

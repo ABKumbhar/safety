@@ -2,6 +2,8 @@ from django.shortcuts import render
 import requests
 from bs4 import BeautifulSoup
 from industry.models import *
+from django.template.defaultfilters import slugify # new
+
 # Create your views here.
 
 
@@ -37,8 +39,11 @@ from industry.models import *
 #     except:
 #         Industry.objects.create(name = (l.text),url='https://www.cdc.gov'+(l["href"]),adinfo="NIOSH")
 
-# industries = Industry.objects.all()
+industries = Industry.objects.all()
 # for i in industries:
+#         i.slug = slugify(str(i.name))
+#         i.save()
+        # for i in industries:
 #     try:
 #         Qnai.objects.get(industry = i )
     
@@ -54,6 +59,17 @@ from industry.models import *
 #                 if len(answers.text) > 50:
 #                         Qnai.objects.create(industry = i,question="Most asked question",answer = answers.text,urlref = urls,number =count )
 #                         count = count+1
+        
+        # else:
+        #     oqnai = requests.get(urls)
+        #     oqnaisoup = BeautifulSoup(oqnai.content, 'html5lib')
+        #     oqnaitext = oqnaisoup.findAll("div",{"class":"syndicate"})
+        #     count=1
+        #     for answers in oqnaitext:
+        #         if len(answers.text) > 50:
+        #                 Qnai.objects.create(industry = i,question="Extra information",answer = answers.text,urlref = urls,number =count )
+        #                 count = count+1
+
 
 
 
