@@ -54,7 +54,20 @@ class QnaiViewSet(viewsets.ModelViewSet):
 
 class QnaeViewSet(viewsets.ModelViewSet):
     queryset = Qnae.objects.all()
-    serializer_class = qnaeserializers
+    serializer_class = gateserializers
+
+class GateViewSet(viewsets.ModelViewSet):
+    queryset = Gate.objects.all().order_by('index')
+    serializer_class = gateserializers
+    lookup_field = "path"
+
+    @action(detail=False, methods=['GET'])
+    def trending(self, request):
+        query = Gate.objects.filter(trending= True)
+        serializer = gateserializers(query,many=True)
+        
+        return Response(serializer.data,status=200)
+
 
 
 class ApiAllView(FlatMultipleModelAPIView):
@@ -65,7 +78,11 @@ class ApiAllView(FlatMultipleModelAPIView):
     },
     {'queryset' : Equipment.objects.all(),
     'serializer_class' :  equipmentserializers 
+    },
+    {'queryset' : Gate.objects.all(),
+    'serializer_class' :  gateserializers 
     }
+    
     
     ]
 

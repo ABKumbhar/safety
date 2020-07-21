@@ -39,8 +39,27 @@ from django.template.defaultfilters import slugify # new
 #     except:
 #         Industry.objects.create(name = (l.text),url='https://www.cdc.gov'+(l["href"]),adinfo="NIOSH")
 
-industries = Industry.objects.all()
+# industries = Industry.objects.all()
 # for i in industries:
+#         if i.seemore is None:
+#                 urls = i.url
+
+#                 if i.adinfo == "OSHA":
+#                         oqnai = requests.get(urls)
+#                         oqnaisoup = BeautifulSoup(oqnai.content, 'html5lib')
+#                         oqnaitext = oqnaisoup.findAll("td")
+#                         count=1
+#                         if len(oqnaitext.text) > 50:
+#                                 i.seemore = oqnaitext.text
+#                                 i.save()
+
+                                        # Qnai.objects.create(industry = i,question="Most asked question",answer = answers.text,urlref = urls,number =count )
+                                        # count = count+1
+
+
+
+
+
 #         i.slug = slugify(str(i.name))
 #         i.save()
         # for i in industries:

@@ -6,7 +6,10 @@ class qnaiserializers(serializers.ModelSerializer):
         model = Qnai
         fields = '__all__'
 
-
+class gateserializers(serializers.ModelSerializer):
+    class Meta:
+        model = Gate
+        fields = '__all__'
 
 class qnaeserializers(serializers.ModelSerializer):
     class Meta:
