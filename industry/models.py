@@ -7,6 +7,7 @@ class Industry(models.Model):
     url = models.URLField(null=True)
     trending = models.BooleanField(null=True, default=False)
     slug = models.SlugField(null=True,blank=True)
+    seemore = models.TextField(null=True,blank=True)
     def __str__(self):
         return self.name
 
@@ -45,6 +46,13 @@ class Qnae(models.Model):
     question = models.TextField(blank=True,null=True)
     answer = models.TextField(blank=True,null=True)
     
+class Gate(models.Model):
+    name = models.CharField(max_length = 100)
+    carddetail = models.CharField(max_length=200)
+    adinfo = models.TextField(blank=True,null=True)
+    trending = models.BooleanField(null=True, default=False)
+    index = models.IntegerField(null=True, blank=True)
+    slug = models.SlugField(null=True,blank=True)
 
 
 

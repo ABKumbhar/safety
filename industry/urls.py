@@ -10,7 +10,7 @@ router.register(r'industry', views.IndustryViewSet)
 router.register(r'equipment', views.EquipmentViewSet)
 router.register(r'qnai',views.QnaiViewSet)
 router.register(r'qnae',views.QnaeViewSet)
-
+router.register(r'gate',views.GateViewSet)
 
 
 urlpatterns = [
